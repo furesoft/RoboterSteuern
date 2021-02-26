@@ -1,6 +1,4 @@
-package builders;
 
-import core;
 
 public class CeilingBuilder implements IRobotBuilder {
     private ROBOTER _rob;

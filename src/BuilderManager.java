@@ -13,7 +13,7 @@ public class BuilderManager {
     }
 
     public void spawn(int index) {
-        _builders.get(index).init(_world);
+        _builders.get(index).init(_world, this);
     }
 
     public void run() {

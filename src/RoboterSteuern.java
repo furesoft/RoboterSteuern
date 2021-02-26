@@ -1,20 +1,16 @@
 public class RoboterSteuern {
     private static WELT myWelt;
-    private static IRobotBuilder _ceilingBuilder;
+
 
     public static void main(String[] args) {
         //Todo: haus bauen
         myWelt = new WELT(6, 6 ,10);
-        _ceilingBuilder = new CeilingBuilder();
+        IRobotBuilder ceilingBuilder = new CeilingBuilder();
 
-        buildCeiling();
-    }
+        BuilderManager manager = new BuilderManager(myWelt);
+        manager.add(ceilingBuilder);
 
-    private static void buildCeiling() {
-        _ceilingBuilder.Init(myWelt);
-
-        while(true) {
-            _ceilingBuilder.Step();
-        }
+        manager.spawn(0);
+        manager.run();
     }
 }

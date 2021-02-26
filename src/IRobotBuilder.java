@@ -1,4 +1,4 @@
 public interface IRobotBuilder {
-    void Init(WELT world);
-    void Step();
+    void init(WELT world);
+    void step();
 }

@@ -38,8 +38,7 @@ public class HouseBuilder implements  IRobotBuilder {
     @Override
     public void step() {
         if(_isInitialized) {
-
-            if(_heightCounter <_height) {
+            if(_heightCounter <= _height) {
                 _rob.Hinlegen("blau");
                 _rob.Schritt();
 
@@ -52,15 +51,18 @@ public class HouseBuilder implements  IRobotBuilder {
                         if (_rob.IstWand() && !_rob.IstBlickWesten()) {
                             _rob.LinksDrehen();
                         } else if (_rob.IstWand() && _rob.IstBlickWesten()) {
-                            _counter = 1;
-                            _rob.RechtsDrehen();
-                            _rob.RechtsDrehen();
-                            _rob.Schritt();
-                            _rob.RechtsDrehen();
-                            _rob.Hinlegen("blau");
-                            _rob.Schritt();
-                            _rob.LinksDrehen();
+                            if (_heightCounter <= _height) {
+                                _counter = 1;
+                                _rob.RechtsDrehen();
+                                _rob.RechtsDrehen();
+                                _rob.Schritt();
+                                _rob.RechtsDrehen();
+                                _rob.Hinlegen("blau");
+                                _rob.Schritt();
+                                _rob.LinksDrehen();
 
+                            _heightCounter++;
+                        }
                             return;
                         }
                     }
@@ -78,7 +80,6 @@ public class HouseBuilder implements  IRobotBuilder {
                 }
 
                 _counter++;
-                _heightCounter++;
             }
         }
     }

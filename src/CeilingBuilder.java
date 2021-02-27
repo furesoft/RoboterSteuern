@@ -30,6 +30,10 @@ public class CeilingBuilder implements IRobotBuilder {
                 _manager.spawn(1);
             }
 
+            if(_rob.IstBlickNorden()) {
+                return;
+            }
+
             if (_rob.IstWand()) {
                 if (_rob.IstBlickOsten()) {
                     _rob.RechtsDrehen();

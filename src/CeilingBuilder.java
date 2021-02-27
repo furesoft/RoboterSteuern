@@ -23,27 +23,14 @@ public class CeilingBuilder implements IRobotBuilder {
 
     @Override
     public void step() {
-        if(_isInitialized) {
+        if (_isInitialized) {
             _counter++;
 
-            if(_counter == _welt.getWeltBreite() * _welt.getWeltLaenge() / 2) {
+            if (_counter == _welt.getWeltBreite() * _welt.getWeltLaenge() / 2) {
                 _manager.spawn(1);
             }
 
-            if (_rob.IstBlickNorden()) {
-                if (!_rob.IstWand()) {
-                    if (_rob.IstZiegel()) {
-                        _rob.Schritt();
-                    } else {
-                        _rob.Hinlegen("grün");
-                        _rob.Schritt();
-
-                        return;
-                    }
-                } else if (_rob.IstWand()) {
-                    return;
-                }
-            } else if (_rob.IstWand()) {
+            if (_rob.IstWand()) {
                 if (_rob.IstBlickOsten()) {
                     _rob.RechtsDrehen();
                     _rob.Hinlegen("grün");

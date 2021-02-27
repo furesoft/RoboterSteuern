@@ -18,6 +18,8 @@ public class HouseBuilder implements  IRobotBuilder {
         _isInitialized = true;
 
         _rob = new ROBOTER(world);
+        _rob.SprunghoeheSetzen(50);
+
         _welt = world;
 
         _rob.LinksDrehen();
@@ -47,9 +49,15 @@ public class HouseBuilder implements  IRobotBuilder {
                     }
                     else if(_rob.IstWand() && _rob.IstBlickWesten()) {
                         _counter = 1;
+                        _rob.RechtsDrehen();
+                        _rob.RechtsDrehen();
+                        _rob.Schritt();
+                        _rob.RechtsDrehen();
+                        _rob.Hinlegen("blau");
+                        _rob.Schritt();
+                        _rob.LinksDrehen();
+
                         return;
-
-
                     }
                 }
             }

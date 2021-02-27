@@ -11,7 +11,7 @@ public class RoboterSteuern {
         IRobotBuilder ceilingBuilder = new CeilingBuilder();
         manager.add(ceilingBuilder);
 
-        IRobotBuilder houseBuilder = new HouseBuilder(5,5);
+        IRobotBuilder houseBuilder = new HouseBuilder(5,5, 5);
         manager.add(houseBuilder);
 
         manager.spawn(0);

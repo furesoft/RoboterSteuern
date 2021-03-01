@@ -57,7 +57,9 @@ public class HouseBuilder implements  IRobotBuilder {
                                 _rob.RechtsDrehen();
                                 _rob.Schritt();
                                 _rob.RechtsDrehen();
-                                _rob.Hinlegen("blau");
+                                if(_heightCounter != _height) {
+                                    _rob.Hinlegen("blau");
+                                }
                                 _rob.Schritt();
                                 _rob.LinksDrehen();
 

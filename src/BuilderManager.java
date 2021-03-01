@@ -16,6 +16,11 @@ public class BuilderManager {
         _builders.get(index).init(_world, this);
     }
 
+    public void spawn(IRobotBuilder builder) {
+        _builders.add(builder);
+        spawn(_builders.size() -1);
+    }
+
     public void run() {
         while(true) {
             for(IRobotBuilder builder : _builders) {

@@ -60,6 +60,10 @@ public class HouseBuilder implements  IRobotBuilder {
                                 if(_heightCounter != _height) {
                                     _rob.Hinlegen("blau");
                                 }
+                                else {
+                                    var roofBuilder = new RoofBuilder(_rob);
+                                    _manager.spawn(roofBuilder);
+                                }
                                 _rob.Schritt();
                                 _rob.LinksDrehen();
 

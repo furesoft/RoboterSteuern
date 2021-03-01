@@ -47,10 +47,11 @@ public class CeilingBuilder implements IRobotBuilder {
                         _rob.RechtsDrehen();
                         _rob.RechtsDrehen();
                     }
-
-                    _rob.Hinlegen("grün");
-                    _rob.Schritt();
-                    _rob.LinksDrehen();
+                    if(!_rob.IstBlickNorden()) {
+                        _rob.Hinlegen("grün");
+                        _rob.Schritt();
+                        _rob.LinksDrehen();
+                    }
 
                     if (_rob.IstWand()) {
                         _rob.RechtsDrehen();

@@ -20,7 +20,7 @@ public class HouseBuilder implements  IRobotBuilder {
     public void init(WELT world, BuilderManager manager) {
         _isInitialized = true;
 
-        _rob = new ROBOTER(world);
+        _rob = RobotManager.create();
         _rob.SprunghoeheSetzen(50);
 
         _welt = world;
@@ -61,8 +61,7 @@ public class HouseBuilder implements  IRobotBuilder {
                                     _rob.Hinlegen("blau");
                                 }
                                 else {
-                                    var roofBuilder = new RoofBuilder(_rob);
-                                    _manager.spawn(roofBuilder);
+                                    _manager.spawn(2);
                                 }
                                 _rob.Schritt();
                                 _rob.LinksDrehen();

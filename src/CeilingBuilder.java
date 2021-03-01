@@ -13,7 +13,7 @@ public class CeilingBuilder implements IRobotBuilder {
     public void init(WELT world, BuilderManager manager) {
         _isInitialized = true;
 
-        _rob = new ROBOTER(world);
+        _rob = RobotManager.create();
         _welt = world;
 
         _rob.LinksDrehen();

@@ -62,8 +62,8 @@ public class HouseBuilder implements  IRobotBuilder {
                                 _rob.RechtsDrehen();
                                 _rob.Schritt();
                                 _rob.RechtsDrehen();
-                                
-                                if(_heightCounter >= _height) {
+
+                                if(_heightCounter >= _height+1) {
                                     color = "rot";
                                 }
 

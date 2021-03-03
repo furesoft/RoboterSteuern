@@ -39,7 +39,7 @@ public class HouseBuilder implements  IRobotBuilder {
     @Override
     public void step() {
         if(_isInitialized) {
-            if(_heightCounter > _height) {
+            if(_heightCounter >= _height) {
                 color = "rot";
             }
 
@@ -62,11 +62,16 @@ public class HouseBuilder implements  IRobotBuilder {
                                 _rob.RechtsDrehen();
                                 _rob.Schritt();
                                 _rob.RechtsDrehen();
-                                if(_heightCounter != _height) {
+                                
+                                if(_heightCounter >= _height) {
+                                    color = "rot";
+                                }
+
+                                if(_heightCounter != _height+1) {
                                     _rob.Hinlegen(color);
                                 }
                                 else {
-                                   // _manager.spawn(2);
+                                    _manager.spawn(2);
                                 }
                                 _rob.Schritt();
                                 _rob.LinksDrehen();

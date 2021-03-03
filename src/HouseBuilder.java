@@ -9,6 +9,7 @@ public class HouseBuilder implements  IRobotBuilder {
     private int _rowCount;
     private int _columnCount;
     private int _height;
+    private String color = "blau";
 
     public HouseBuilder(int rows, int columns, int height) {
         _rowCount = rows;
@@ -38,8 +39,12 @@ public class HouseBuilder implements  IRobotBuilder {
     @Override
     public void step() {
         if(_isInitialized) {
-            if(_heightCounter <= _height) {
-                _rob.Hinlegen("blau");
+            if(_heightCounter == _height) {
+                color = "rot";
+            }
+
+            if(_heightCounter <= _height +1) {
+                _rob.Hinlegen(color);
                 _rob.Schritt();
 
                 if (_rowCount * _columnCount == _counter) {
@@ -58,7 +63,7 @@ public class HouseBuilder implements  IRobotBuilder {
                                 _rob.Schritt();
                                 _rob.RechtsDrehen();
                                 if(_heightCounter != _height) {
-                                    _rob.Hinlegen("blau");
+                                    _rob.Hinlegen(color);
                                 }
                                 else {
                                     _manager.spawn(2);
@@ -74,12 +79,12 @@ public class HouseBuilder implements  IRobotBuilder {
                 }
                 if (_counter % (_columnCount * 2) == 0) {
                     _rob.LinksDrehen();
-                    _rob.Hinlegen("blau");
+                    _rob.Hinlegen(color);
                     _rob.Schritt();
                     _rob.LinksDrehen();
                 } else if (_counter % _columnCount == 0) {
                     _rob.RechtsDrehen();
-                    _rob.Hinlegen("blau");
+                    _rob.Hinlegen(color);
                     _rob.Schritt();
                     _rob.RechtsDrehen();
                 }

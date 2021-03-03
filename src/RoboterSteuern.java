@@ -3,8 +3,8 @@ public class RoboterSteuern {
     public static void main(String[] args) {
         var myWelt = new WELT(8, 8 ,10);
 
-        BuilderManager manager = new BuilderManager(myWelt);
         RobotManager.Init(myWelt);
+        BuilderManager manager = new BuilderManager(myWelt);
 
         var ceilingBuilder = new CeilingBuilder();
         manager.add(ceilingBuilder);

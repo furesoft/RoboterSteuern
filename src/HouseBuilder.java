@@ -39,13 +39,20 @@ public class HouseBuilder implements  IRobotBuilder {
     @Override
     public void step() {
         if(_isInitialized) {
-            if(_heightCounter >= _height) {
+            if(_heightCounter >= _height+1) {
                 color = "rot";
             }
 
             if(_heightCounter <= _height +1) {
-                _rob.Hinlegen(color);
-                _rob.Schritt();
+                if(!_rob.IstWand()) {
+                    _rob.Hinlegen(color);
+                    _rob.Schritt();
+                }
+                else {
+                    _manager.spawn(2);
+                    _isInitialized = false;
+                    return;
+                }
 
                 if (_rowCount * _columnCount == _counter) {
                     _rob.LinksDrehen();
@@ -63,15 +70,12 @@ public class HouseBuilder implements  IRobotBuilder {
                                 _rob.Schritt();
                                 _rob.RechtsDrehen();
 
-                                if(_heightCounter >= _height+1) {
-                                    color = "rot";
-                                }
-
                                 if(_heightCounter != _height+1) {
                                     _rob.Hinlegen(color);
                                 }
                                 else {
                                     _manager.spawn(2);
+                                    _isInitialized = false;
                                 }
                                 _rob.Schritt();
                                 _rob.LinksDrehen();
@@ -82,16 +86,19 @@ public class HouseBuilder implements  IRobotBuilder {
                         }
                     }
                 }
-                if (_counter % (_columnCount * 2) == 0) {
-                    _rob.LinksDrehen();
-                    _rob.Hinlegen(color);
-                    _rob.Schritt();
-                    _rob.LinksDrehen();
-                } else if (_counter % _columnCount == 0) {
-                    _rob.RechtsDrehen();
-                    _rob.Hinlegen(color);
-                    _rob.Schritt();
-                    _rob.RechtsDrehen();
+
+                if(!_rob.IstWand()) {
+                    if (_counter % (_columnCount * 2) == 0) {
+                        _rob.LinksDrehen();
+                        _rob.Hinlegen(color);
+                        _rob.Schritt();
+                        _rob.LinksDrehen();
+                    } else if (_counter % _columnCount == 0) {
+                        _rob.RechtsDrehen();
+                        _rob.Hinlegen(color);
+                        _rob.Schritt();
+                        _rob.RechtsDrehen();
+                    }
                 }
 
                 _counter++;

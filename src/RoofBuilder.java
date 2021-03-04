@@ -13,16 +13,17 @@ public class RoofBuilder implements IRobotBuilder {
 
     @Override
     public void init(WELT world, BuilderManager manager) {
-        _rob = RobotManager.get(1);
+        _rob = RobotManager.get(0);
 
         _welt = world;
         _manager = manager;
 
          _isInitialized = true;
-        _rob.RechtsDrehen();
-        _rob.RechtsDrehen();
-        _rob.Schritt();
-        _rob.RechtsDrehen();
+
+         _rob.Schritt();
+         _rob.RechtsDrehen();
+         _rob.Schritt();
+         _rob.LinksDrehen();
     }
 
     @Override

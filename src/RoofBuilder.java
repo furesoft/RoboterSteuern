@@ -17,6 +17,7 @@ public class RoofBuilder implements IRobotBuilder {
 
         _welt = world;
         _manager = manager;
+        _rob.SprunghoeheSetzen(100);
 
          _isInitialized = true;
 
@@ -24,13 +25,21 @@ public class RoofBuilder implements IRobotBuilder {
          _rob.RechtsDrehen();
          _rob.Schritt();
          _rob.LinksDrehen();
+         _rob.Schritt();
     }
 
     @Override
     public void step() {
         if(_isInitialized) {
+            if(_rob.IstZiegel("blau")) {
+                _rob.Aufheben();
+                _rob.Hinlegen("rot");
+                _rob.RechtsDrehen();
+                _rob.Schritt();
+                _rob.RechtsDrehen();
+            }
 
-
+            _rob.Schritt();
         }
     }
 }

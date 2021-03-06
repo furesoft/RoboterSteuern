@@ -31,6 +31,8 @@ public class CeilingBuilder implements IRobotBuilder {
             }
 
             if(_rob.IstBlickNorden()) {
+                _isInitialized = false;
+
                 return;
             }
 

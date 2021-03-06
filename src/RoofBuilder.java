@@ -1,3 +1,5 @@
+
+
 public class RoofBuilder implements IRobotBuilder {
     private ROBOTER _rob;
     private WELT _welt;
@@ -6,10 +8,6 @@ public class RoofBuilder implements IRobotBuilder {
     private BuilderManager _manager;
 
     private int _counter = 1;
-    private int _heightCounter = 1;
-    private int _rowCount;
-    private int _columnCount = 1;
-    private int _height = 1;
 
     @Override
     public void init(WELT world, BuilderManager manager) {
@@ -19,27 +17,47 @@ public class RoofBuilder implements IRobotBuilder {
         _manager = manager;
         _rob.SprunghoeheSetzen(100);
 
-         _isInitialized = true;
-
          _rob.Schritt();
          _rob.RechtsDrehen();
          _rob.Schritt();
          _rob.LinksDrehen();
          _rob.Schritt();
+
+        for(int x = 1; x < 4; x++) {
+            _rob.Schritt();
+        }
+
+         _rob.Aufheben();
+         _rob.Hinlegen("rot");
+         _rob.Schritt();
+         _rob.RechtsDrehen();
+         _rob.Schritt();
+         _rob.RechtsDrehen();
+
+         _isInitialized = true;
     }
 
     @Override
     public void step() {
         if(_isInitialized) {
-            if(_rob.IstZiegel("blau")) {
-                _rob.Aufheben();
-                _rob.Hinlegen("rot");
+
+            if(_counter % 8 == 0) {
                 _rob.RechtsDrehen();
+                _rob.Hinlegen("rot");
                 _rob.Schritt();
                 _rob.RechtsDrehen();
             }
+            else if(_counter % 4 == 0) {
+                _rob.LinksDrehen();
+                _rob.Hinlegen("rot");
+                _rob.Schritt();
+                _rob.LinksDrehen();
+            }
 
+            _rob.Hinlegen("rot");
             _rob.Schritt();
+
+            _counter++;
         }
     }
 }

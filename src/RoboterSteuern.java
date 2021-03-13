@@ -9,7 +9,7 @@ public class RoboterSteuern {
         var ceilingBuilder = new CeilingBuilder();
         manager.add(ceilingBuilder);
 
-        var houseBuilder = new HouseBuilder(5,5, 5);
+        var houseBuilder = new HouseBuilder(5,5, 4);
         manager.add(houseBuilder);
 
         var roofBuilder = new RoofBuilder();

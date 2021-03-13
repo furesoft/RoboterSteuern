@@ -40,24 +40,64 @@ public class RoofBuilder implements IRobotBuilder {
     @Override
     public void step() {
         if(_isInitialized) {
+            if(_counter == 1) {
+                for (int i = 0; i < 3; i++) {
+                    _rob.Hinlegen("rot");
+                    _rob.Schritt();
+                }
 
-            if(_counter % 8 == 0) {
-                _rob.RechtsDrehen();
-                _rob.Hinlegen("rot");
-                _rob.Schritt();
-                _rob.RechtsDrehen();
-            }
-            else if(_counter % 4 == 0) {
                 _rob.LinksDrehen();
                 _rob.Hinlegen("rot");
                 _rob.Schritt();
                 _rob.LinksDrehen();
+
+                for (int i = 0; i < 2; i++) {
+                    _rob.Hinlegen("rot");
+                    _rob.Schritt();
+                }
+
+                _rob.RechtsDrehen();
+                _rob.Hinlegen("rot");
+                _rob.Schritt();
+                _rob.RechtsDrehen();
+
+                for (int i = 0; i < 2; i++) {
+                    _rob.Hinlegen("rot");
+                    _rob.Schritt();
+                }
+
+                _rob.LinksDrehen();
+                _rob.Hinlegen("rot");
+                _rob.Schritt();
+                _rob.LinksDrehen();
+
+                for (int i = 0; i < 2; i++) {
+                    _rob.Hinlegen("rot");
+                    _rob.Schritt();
+                }
+
+                _counter++;
+            }
+            else if(_counter == 2) {
+                _rob.LinksDrehen();
+                _rob.Schritt();
+                _rob.LinksDrehen();
+                _rob.Hinlegen("rot");
+                _rob.RechtsDrehen();
+                _rob.Schritt();
+                _rob.LinksDrehen();
+                _rob.Hinlegen("rot");
+                _rob.RechtsDrehen();
+                _rob.RechtsDrehen();
+                _rob.Schritt();
+                _rob.Schritt();
+
+                _counter++;
+            }
+            else {
+                return;
             }
 
-            _rob.Hinlegen("rot");
-            _rob.Schritt();
-
-            _counter++;
         }
     }
 }
